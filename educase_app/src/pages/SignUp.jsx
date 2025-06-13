@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from "framer-motion";
 
 const SignUp = () => {
 
@@ -29,18 +30,24 @@ const SignUp = () => {
 
     localStorage.setItem('user', JSON.stringify(formdata));
 
-    if(!formdata.fullName && !formdata.email && !formdata.password && !formdata.phone && !formdata.isAgency)
-    {
+    if (!formdata.fullName && !formdata.email && !formdata.password && !formdata.phone && !formdata.isAgency) {
       alert(" Required Fields Should Filled Out ");
     }
-    else{
+    else {
+      console.log("Account Created Successfully!! ");
       navigate('/login');
     }
-    
+
   }
 
   return (
-    <div className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8'>
+
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 1.05 }}
+      transition={{ duration: 0.4 }}
+      className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8' >
 
       <div className='bg-gray-50 border-gray-200 border-2 rounded-md min-h-screen sm:min-h-[90vh] w-full
          max-w-sm p-5 flex flex-col justify-between items-start gap-5 shadow-gray-300 shadow-lg'>
@@ -158,7 +165,7 @@ const SignUp = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

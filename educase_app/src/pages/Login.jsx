@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 const Login = () => {
 
@@ -30,7 +31,13 @@ const Login = () => {
 
   }
   return (
-    <div className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8'>
+
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -50 }}
+      transition={{ duration: 0.3 }} 
+       className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8'>
       <div className='bg-gray-50 border-gray-200 border-2 rounded-md min-h-screen sm:min-h-[90vh] w-full
          max-w-sm p-5 flex flex-col items-start justify-start gap-3 shadow-gray-300 shadow-lg'>
 
@@ -88,7 +95,7 @@ const Login = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

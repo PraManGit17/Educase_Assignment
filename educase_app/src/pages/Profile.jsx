@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaCamera } from 'react-icons/fa';
 import defaultimage from '../assets/default.jpg';
+import { motion } from "framer-motion"
 
 const Profile = () => {
 
@@ -16,7 +17,14 @@ const Profile = () => {
   };
 
   return (
-    <div className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8'>
+
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{ duration: 0.4 }}
+      className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8'>
+
       <div className='bg-gray-100 border-gray-200 border-2 rounded-md min-h-screen sm:min-h-[90vh] w-full
          max-w-sm flex flex-col items-start justify-start gap-2 shadow-gray-300 shadow-lg'>
 
@@ -27,14 +35,14 @@ const Profile = () => {
         <div className='flex flex-col gap-10 text-sm sm:text-md h-full p-5'>
 
           <div className="flex items-center gap-8">
-            
+
             <div className="relative w-16 h-16">
               <img
-                src={image || defaultimage} 
+                src={image || defaultimage}
                 alt="Profile"
                 className="rounded-full w-20 h-16 object-cover"
               />
-              
+
               <label htmlFor="profileUpload">
                 <div className="absolute bottom-0 right-0 bg-purple-600 p-1 rounded-full cursor-pointer">
                   <FaCamera className="text-white text-sm" />
@@ -65,7 +73,7 @@ const Profile = () => {
         <hr className='border border-dashed border-gray-300 w-[100%]'></hr>
 
       </div>
-    </div>
+    </motion.div>
   )
 }
 

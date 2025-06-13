@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Landing = () => {
 
@@ -14,7 +15,13 @@ const Landing = () => {
   };
 
   return (
-    <div className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8'>
+        
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -40 }}
+      transition={{ duration: 0.4 }}
+       className='min-h-screen w-full flex items-center justify-center p-2 sm:p-4 md:p-8'>
 
       <div className='bg-gray-50 border-gray-200 border-2 rounded-md min-h-screen sm:min-h-[90vh] w-full
          max-w-sm p-5 flex flex-col items-start justify-end gap-2 shadow-gray-300 shadow-lg'>
@@ -40,7 +47,7 @@ const Landing = () => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
